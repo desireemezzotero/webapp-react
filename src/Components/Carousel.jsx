@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useGlobalContext } from '../Contex/GlobalContext';
+import { Link } from 'react-router-dom';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -22,7 +23,9 @@ function Carousel() {
       >
         {movies?.map(item => 
              <SwiperSlide key={item.id}>
+               <Link to={`/${item.id}`}>
                <img src={item.img} alt="" />
+               </Link>
              </SwiperSlide>)}
       </Swiper>
     </>

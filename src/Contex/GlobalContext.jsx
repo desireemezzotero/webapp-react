@@ -6,6 +6,7 @@ const GlobalContext = createContext()
 
 function GlobalProvider({children}) {
   const [movies, setMovies] = useState([]);
+  const [movie, setMovie] = useState(null)
 
   const apiUrl = 'http://localhost:3000/movie'
   
@@ -17,9 +18,22 @@ function GlobalProvider({children}) {
     .catch(err => console.log(err))
   }
 
+  const fetchMovie = (id) => {
+    axios.get(`${apiUrl}/${id}`)
+    .then(res=> {
+      console.log(res.data)
+      setMovie(res.data)
+    })
+    .catch(err => 
+      console.log(err)
+    )
+  }
+
   const value = {
     fetchData, /* chiamata api */
     movies, setMovies, /* useState per i film */
+    fetchMovie, /* chiamata per il dettglio */
+    movie, setMovie /* useState per il dettaglio dei film */
   }
 
   return (
