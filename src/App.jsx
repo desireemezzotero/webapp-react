@@ -3,6 +3,7 @@ import { GlobalProvider } from "./Contex/GlobalContext";
 import DefaultLayout from "./Layouts/DefaultLayout";
 import Homepage from "./Pages/Homepage";
 import Details from "./Pages/Details";
+import About from "./Pages/About"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route element={<DefaultLayout/>}>
        <Route path='/' element= {<Homepage />}/>
        <Route path='/:id' element= {<Details />}/>
+       <Route path='/chi-siamo' element= {< About/>}/>
       </Route>
      </Routes>  
     </BrowserRouter>
