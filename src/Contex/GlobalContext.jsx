@@ -13,7 +13,6 @@ function GlobalProvider({children}) {
   const fetchData =() => {
     axios.get(apiUrl)
     .then (res => {
-      console.log(res.data)
       setMovies(res.data)
     })
     .catch(err => console.log(err))
