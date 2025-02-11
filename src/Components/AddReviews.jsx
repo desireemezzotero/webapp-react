@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 
 const AddReviews = ({fetchMovie}) => {
   const {id} = useParams()
-  console.log(id)
   const apiUrl = 'http://localhost:3000/movie'
 
   const initialForm = {

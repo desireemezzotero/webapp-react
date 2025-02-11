@@ -24,6 +24,9 @@ function Header() {
                <li>
                   <Link to="/chi-siamo" className="block py-2 px-3 text-gray-600 rounded-sm cursor-progress" aria-current="page">About</Link>
                </li>
+               <li>
+                  <Link to="/aggiungi-film" className="block py-2 px-3 text-gray-600 rounded-sm cursor-progress" aria-current="page">Aggiungi Film</Link>
+               </li>
              </ul>
            </div>
          </div>
