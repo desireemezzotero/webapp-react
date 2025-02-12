@@ -1,11 +1,13 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import { useGlobalContext } from "../Contex/GlobalContext"
 
 function AddMovies() {
   const apiUrl = 'http://localhost:3000/movie'
   const navigate = useNavigate()
-
+  const {setIsLoading} = useGlobalContext()
+  
   const initialForm = {
     title: '',
     genre: '',
@@ -53,9 +55,11 @@ function AddMovies() {
     }
     console.log(dataToSend)
 
+    setIsLoading(true)
     axios.post(apiUrl, dataToSend, {headers:{"Content-Type": 'multipart/form-data'}})
     .then(() => navigate('/'))
     .catch(err => console.log(err))
+    .finally(()=>  setIsLoading(false))
   }
 
 

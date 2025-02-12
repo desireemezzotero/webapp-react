@@ -1,11 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useGlobalContext } from "../Contex/GlobalContext"
 
 const AddReviews = ({fetchMovie}) => {
   const {id} = useParams()
   const apiUrl = 'http://localhost:3000/movie'
-
+ 
+  const {setIsLoading} = useGlobalContext()
   const initialForm = {
     name: '',
     text: '',
@@ -36,7 +38,7 @@ const AddReviews = ({fetchMovie}) => {
      setError('Controlla bene i dati, potrebbe esserci qualche errore, ricordati i dati sono obbligatori')
      return
     }
-    
+    setIsLoading(true)
     axios.post(`${apiUrl}/${id}`, form, {headers:{"Content-Type": 'application/json'}})
       .then(res => {
         setForm(initialForm)
@@ -46,6 +48,7 @@ const AddReviews = ({fetchMovie}) => {
       .catch (err => 
         console.log(err)
       )
+    .finally(() => setIsLoading(false))
     }
   
 
